@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+
 import DTO.HangHoa;
-import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ public class HangHoaDAO {
 
     }
 
-    public ArrayList<HangHoa> loadListHangHoa() {
+    public ArrayList<HangHoa> getListHangHoa(int trangthai) {
         ArrayList<HangHoa> listHH = new ArrayList<HangHoa>();
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from hanghoa");
+            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from hanghoa where TrangThai=?", trangthai);
             while (rs.next()) {
                 HangHoa hanghoa = new HangHoa(rs);
                 listHH.add(hanghoa);
@@ -43,12 +43,44 @@ public class HangHoaDAO {
         return listHH;
     }
 
-    public String inHangHoa() {
-        ArrayList<HangHoa> listHH = loadListHangHoa();
-        String tenHang = "";
-        for (HangHoa i : listHH) {
-            tenHang = i.getTenHang();
+    public HangHoa getHangHoa(int maHH) {
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from hanghoa where MaHang=?", maHH);
+        HangHoa hanghoa = null;
+        try {
+            while (rs.next()) {
+                hanghoa = new HangHoa(rs);
+            }
+        } catch (SQLException ex) {
+            // Handle the SQLException appropriately
+            ex.printStackTrace(); // For example, printing the stack trace
         }
-        return tenHang;
+        return hanghoa;
+    }
+
+    public int updateHangHoa(HangHoa hanghoa) {
+        int rs = DataProvider.getInstance().executeNonQuery("call UpdateHangHoa", hanghoa.getMaHang(), hanghoa.getMaNhomHang(), hanghoa.getMaNCC(), hanghoa.getTenHang(),
+                hanghoa.getdVT(), hanghoa.getGiaNhap(), hanghoa.getHeSo(), hanghoa.getHinhAnh(), hanghoa.getSoLuongTon(), (hanghoa.getTrangThai())?1:0);
+        return rs;
+    }
+
+    public int insertHangHoa(HangHoa hanghoa) {
+        int rs = DataProvider.getInstance().executeNonQuery("call InsertHangHoa", hanghoa.getMaNhomHang(), hanghoa.getMaNCC(), hanghoa.getTenHang(),
+                hanghoa.getdVT(), hanghoa.getGiaNhap(), hanghoa.getHeSo(), hanghoa.getHinhAnh(), hanghoa.getSoLuongTon(), (hanghoa.getTrangThai())?1:0);
+        return rs;
+    }
+
+    public int deleteHangHoa(int maHangHoa) {
+        int rs = DataProvider.getInstance().executeNonQuery("Update hanghoa set TrangThai=0 where MaHang=?", maHangHoa);
+        return rs;
+    }
+    
+    public int deletePermanentHangHoa(int maHangHoa) {
+        int rs = DataProvider.getInstance().executeNonQuery("Delete from hanghoa where MaHang=?", maHangHoa);
+        return rs;
+    }
+    
+    public int recoveryHangHoa(int maHangHoa) {
+        int rs = DataProvider.getInstance().executeNonQuery("Update hanghoa set TrangThai=1 where MaHang=?", maHangHoa);
+        return rs;
     }
 }

@@ -35,50 +35,72 @@ public class DataProvider {
         return instance;
     }
 
-    // Thực hiện truy vấn SQL thông thường
-    public ResultSet executeQuery(String query) {
+    public ResultSet executeQuery(String query, Object... parameters) {
         ResultSet resultSet = null;
         try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            resultSet = statement.executeQuery();
+            if (query.toLowerCase().startsWith("call")) { // Nếu là gọi stored procedure
+                StringBuilder sqlBuilder = new StringBuilder();
+                sqlBuilder.append("{").append(query).append("(");
+                for (int i = 0; i < parameters.length; i++) {
+                    if (i > 0) {
+                        sqlBuilder.append(", ");
+                    }
+                    sqlBuilder.append("?");
+                }
+                sqlBuilder.append(")}");
+
+                CallableStatement callableStatement = connection.prepareCall(sqlBuilder.toString());
+                for (int i = 0; i < parameters.length; i++) {
+                    callableStatement.setObject(i + 1, parameters[i]);
+                }
+
+                resultSet = callableStatement.executeQuery();
+            } else { // Nếu là truy vấn thông thường
+                PreparedStatement statement = connection.prepareStatement(query);
+                for (int i = 0; i < parameters.length; i++) {
+                    statement.setObject(i + 1, parameters[i]);
+                }
+                resultSet = statement.executeQuery();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultSet;
     }
 
-    // Gọi stored procedure không trả về kết quả
-    public void callStoredProcedure(String procedureName) {
+    public int executeNonQuery(String query, Object... parameters) {
+        int affectedRows = 0;
         try {
-            CallableStatement callableStatement = connection.prepareCall("{call " + procedureName + "}");
-            callableStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Gọi stored procedure với nhiều tham số đầu vào
-    public void callStoredProcedureWithParameters(String procedureName, Object... parameters) {
-        try {
-            StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.append("{call ").append(procedureName).append("(");
-            for (int i = 0; i < parameters.length; i++) {
-                if (i > 0) {
-                    sqlBuilder.append(", ");
+            if (query.toLowerCase().startsWith("call")) { // Nếu là gọi stored procedure
+                StringBuilder sqlBuilder = new StringBuilder();
+                sqlBuilder.append("{").append(query).append("(");
+                for (int i = 0; i < parameters.length; i++) {
+                    if (i > 0) {
+                        sqlBuilder.append(", ");
+                    }
+                    sqlBuilder.append("?");
                 }
-                sqlBuilder.append("?");
-            }
-            sqlBuilder.append(")}");
+                sqlBuilder.append(")}");
 
-            CallableStatement callableStatement = connection.prepareCall(sqlBuilder.toString());
-            for (int i = 0; i < parameters.length; i++) {
-                callableStatement.setObject(i + 1, parameters[i]);
-            }
+                CallableStatement callableStatement = connection.prepareCall(sqlBuilder.toString());
+                for (int i = 0; i < parameters.length; i++) {
+                    callableStatement.setObject(i + 1, parameters[i]);
+                }
 
-            callableStatement.execute();
+                callableStatement.execute();
+                affectedRows = callableStatement.getUpdateCount();
+            } else { // Nếu là truy vấn thông thường
+                PreparedStatement statement = connection.prepareStatement(query);
+                for (int i = 0; i < parameters.length; i++) {
+                    statement.setObject(i + 1, parameters[i]);
+                }
+                affectedRows = statement.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+//            JOptionPane.showMessageDialog(null, e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
+        return affectedRows;
     }
 
     public void closeConnection() {

@@ -12,9 +12,19 @@ import java.sql.SQLException;
  * @author Admin
  */
 public class HangHoa {
-    int maHang,maNhomHang, soLuongTon;
-    String tenHang,dVT,hinhAnh;
-    double giaBan, giaNhap;
+
+    int maHang, maNhomHang, maNCC;
+    boolean trangThai;
+    String tenHang, dVT, hinhAnh;
+    double giaBan, giaNhap, heSo, soLuongTon;
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public boolean getTrangThai() {
+        return trangThai;
+    }
 
     public int getMaHang() {
         return maHang;
@@ -32,11 +42,11 @@ public class HangHoa {
         this.maNhomHang = maNhomHang;
     }
 
-    public int getSoLuongTon() {
+    public double getSoLuongTon() {
         return soLuongTon;
     }
 
-    public void setSoLuongTon(int soLuongTon) {
+    public void setSoLuongTon(double soLuongTon) {
         this.soLuongTon = soLuongTon;
     }
 
@@ -75,9 +85,25 @@ public class HangHoa {
     public void setGiaBan(double giaBan) {
         this.giaBan = giaBan;
     }
-    
+
+    public int getMaNCC() {
+        return maNCC;
+    }
+
+    public double getHeSo() {
+        return heSo;
+    }
+
+    public void setMaNCC(int maNCC) {
+        this.maNCC = maNCC;
+    }
+
+    public void setHeSo(double heSo) {
+        this.heSo = heSo;
+    }
+
     public HangHoa() {
-        
+
     }
 
     public double getGiaNhap() {
@@ -86,18 +112,19 @@ public class HangHoa {
 
     public HangHoa(ResultSet rs) {
         try {
-            this.maHang = rs.getInt("ma_hang");
-            this.maNhomHang = rs.getInt("ma_nhomhang");
-            this.tenHang = rs.getString("tenhang");
-            this.soLuongTon = rs.getInt("soluongton");
-            this.dVT = rs.getString("dvt");
-            this.hinhAnh = rs.getString("hinhanh");
-            this.giaBan = rs.getDouble("giaban");            
-            this.giaNhap = rs.getDouble("gianhap");
-
+            this.maHang = rs.getInt("MaHang");
+            this.maNhomHang = rs.getInt("MaNhomHang");
+            this.maNCC = rs.getInt("MaNCC");
+            this.tenHang = rs.getString("TenHang");
+            this.soLuongTon = rs.getDouble("SoLuongTon");
+            this.dVT = rs.getString("DVT");
+            this.hinhAnh = rs.getString("HinhAnh");
+            this.giaBan = rs.getDouble("GiaBan");
+            this.heSo = rs.getDouble("HeSo");
+            this.giaNhap = rs.getDouble("GiaNhap");
+            this.trangThai = rs.getBoolean("TrangThai");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       
     }
 }
