@@ -47,7 +47,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jpnMenu" max="32767" attributes="0"/>
+              <Component id="jpnMenu" alignment="0" max="32767" attributes="0"/>
               <Component id="jpnView" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -63,54 +63,51 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpnShopName" max="32767" attributes="0"/>
+                  <Component id="jpnName" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jpnNhapHang" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnHoaDon" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnTrangChu" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnBanHang" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnHangHoa" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnNhomHangHoa" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jpnNhaCungCap" max="32767" attributes="0"/>
+                          <Component id="jpnPermission" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpnPolicy" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpnInfoDB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpnSession" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpnTablespace" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jpnUser" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       <Component id="jbtDangXuat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jpnShopName" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jpnTrangChu" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnInfoDB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jpnBanHang" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnSession" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jpnHangHoa" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnTablespace" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jpnNhomHangHoa" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnUser" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jpnHoaDon" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnPolicy" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jpnNhapHang" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jpnNhaCungCap" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jpnPermission" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="jbtDangXuat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jpnShopName">
+            <Container class="javax.swing.JPanel" name="jpnName">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -122,7 +119,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="jlbShopName" pref="392" max="32767" attributes="0"/>
+                          <Component id="jlbName" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -131,14 +128,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="jlbShopName" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="jlbName" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbShopName">
+                <Component class="javax.swing.JLabel" name="jlbName">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c4" green="e4" red="ff" type="rgb"/>
@@ -150,12 +147,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-shop.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="C&#x1eec;A H&#xc0;NG N&#xd4;NG S&#x1ea2;N S&#x1ea0;CH"/>
+                    <Property name="text" type="java.lang.String" value="Oracle DB Admin Dashboard"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnTrangChu">
+            <Container class="javax.swing.JPanel" name="jpnInfoDB">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -167,18 +164,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbTrangChu" max="32767" attributes="0"/>
+                          <Component id="jlbInfoDB" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbTrangChu" alignment="1" pref="78" max="32767" attributes="0"/>
+                      <Component id="jlbInfoDB" alignment="1" pref="78" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbTrangChu">
+                <Component class="javax.swing.JLabel" name="jlbInfoDB">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -189,12 +186,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-home.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xf4;ng Tin Database"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnBanHang">
+            <Container class="javax.swing.JPanel" name="jpnSession">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -204,21 +201,21 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jlbBanHang" max="32767" attributes="0"/>
+                          <Component id="jlbSession" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbBanHang" alignment="0" pref="76" max="32767" attributes="0"/>
+                      <Component id="jlbSession" alignment="0" pref="76" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbBanHang">
+                <Component class="javax.swing.JLabel" name="jlbSession">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="16" style="1"/>
@@ -226,12 +223,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-sell.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; B&#xe1;n H&#xe0;ng"/>
+                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Session"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnHangHoa">
+            <Container class="javax.swing.JPanel" name="jpnTablespace">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -241,21 +238,21 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jlbHangHoa" max="32767" attributes="0"/>
+                          <Component id="jlbTablespace" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbHangHoa" alignment="0" pref="78" max="32767" attributes="0"/>
+                      <Component id="jlbTablespace" alignment="0" pref="78" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbHangHoa">
+                <Component class="javax.swing.JLabel" name="jlbTablespace">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="16" style="1"/>
@@ -263,12 +260,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-product.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#xe0;ng H&#xf3;a"/>
+                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Tablespace"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnNhomHangHoa">
+            <Container class="javax.swing.JPanel" name="jpnUser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -278,9 +275,9 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jlbNhomHangHoa" pref="370" max="32767" attributes="0"/>
+                          <Component id="jlbUser" pref="370" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -289,13 +286,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jlbNhomHangHoa" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="jlbUser" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbNhomHangHoa">
+                <Component class="javax.swing.JLabel" name="jlbUser">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="16" style="1"/>
@@ -303,12 +300,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-category.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xf3;m H&#xe0;ng H&#xf3;a"/>
+                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Users"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnHoaDon">
+            <Container class="javax.swing.JPanel" name="jpnPolicy">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -318,21 +315,21 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jlbHoaDon" max="32767" attributes="0"/>
+                          <Component id="jlbPolicy" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbHoaDon" alignment="0" pref="78" max="32767" attributes="0"/>
+                      <Component id="jlbPolicy" alignment="0" pref="78" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbHoaDon">
+                <Component class="javax.swing.JLabel" name="jlbPolicy">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="16" style="1"/>
@@ -340,12 +337,12 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-order.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#xf3;a &#x110;&#x1a1;n"/>
+                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Policy"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnNhapHang">
+            <Container class="javax.swing.JPanel" name="jpnPermission">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="d3" red="d3" type="rgb"/>
@@ -355,21 +352,21 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jLabel7" max="32767" attributes="0"/>
+                          <Component id="jlbPermission" max="32767" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel7" alignment="1" pref="78" max="32767" attributes="0"/>
+                      <Component id="jlbPermission" alignment="1" pref="78" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="jlbPermission">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="16" style="1"/>
@@ -377,44 +374,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/icon-import.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#x1ead;p H&#xe0;ng"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jpnNhaCungCap">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="d3" red="d3" type="rgb"/>
-                </Property>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jlbNhaCungCap" max="32767" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbNhaCungCap" alignment="0" pref="78" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbNhaCungCap">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="16" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icon-supplier.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Nh&#xe0; Cung C&#x1ea5;p"/>
+                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Permission"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -440,7 +400,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="576" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="895" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

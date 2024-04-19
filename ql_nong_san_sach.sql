@@ -37,7 +37,7 @@ INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, So
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 3, N'Nho xanh Nam Phi', N'Kg', 1.2, 125000, 'nhoXanh.jpg', 10.5);
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 4, N'Quýt giống Úc', N'Kg', 1.2, 40000, 'quytUc.jpg', 12.5);
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 3, N'Cam sành', N'Kg', 1.2, 12500, 'camSanh.jpg', 23);
-INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 5, N'Táo Autumn Mỹ?', N'Kg', 1.2, 57500, 'taoMy.jpg', 8);
+INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 5, N'Táo Autumn Mỹ', N'Kg', 1.2, 57500, 'taoMy.jpg', 8);
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (4, 5, N'Ổi Đài Loan', N'Kg', 1.2, 17500, 'oiDaiLoan.jpg', 6);
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (1, 1, N'Cải bẹ xanh', N'Kg', 1.2, 15000, 'caiBeXanh.jpg', 9);
 INSERT INTO hanghoa (MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, HinhAnh, SoLuongTon) VALUES (1, 1, N'Cải ngọt', N'Kg', 1.2, 15000, 'caiNgot.jpg', 6);
