@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import GUI.Admin.AdminJFrame;
 import DAO.TaiKhoanDAO;
 import DTO.NhanVien;
 import java.awt.Color;
@@ -149,10 +150,17 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                         jlbMsg.setText("<html><div style='width:200px; white-space: pre-wrap; text-align: center;'>Tài khoản của bạn đang bị tạm khóa!</div></html>");
                     } else {
                         this.dispose();
-                        MainJFrame mainJFrame = new MainJFrame();
-                        mainJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        mainJFrame.setVisible(true);
-                        mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        if (nv.getChucVu().equals("Nhân viên")) {
+                            MainJFrame mainJFrame = new MainJFrame();
+                            mainJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            mainJFrame.setVisible(true);
+                            mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        } else {
+                            AdminJFrame adminJFrame = new AdminJFrame();
+                            adminJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            adminJFrame.setVisible(true);
+                            adminJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        }
                     }
                 }
             }
