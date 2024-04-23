@@ -12,8 +12,19 @@ public class DataProvider {
     private static DataProvider instance = null;
 
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-    private static final String USERNAME = "DAT";
-    private static final String PASSWORD = "123";
+    private static String USERNAME;
+    private static String PASSWORD;
+
+    public static void setUSERNAME(String USERNAME) {
+        if(USERNAME.substring(0,2).equals("ad")) {
+            USERNAME += " as sysdba";
+        }
+        DataProvider.USERNAME = USERNAME;
+    }
+
+    public static void setPASSWORD(String PASSWORD) {
+        DataProvider.PASSWORD = PASSWORD;
+    }
 
     private Connection connection;
 
