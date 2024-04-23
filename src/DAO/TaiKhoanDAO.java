@@ -32,7 +32,7 @@ public class TaiKhoanDAO {
 
     public NhanVien Login(String username, String password) {
         NhanVien nv = null;
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from NhanVien where username=? and password=?", username, password);
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhanVien where username=? and password=?", username, password);
         try {
             if (rs.next()) {
                 nv = new NhanVien(rs);

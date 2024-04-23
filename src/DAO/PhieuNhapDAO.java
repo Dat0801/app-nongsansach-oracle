@@ -31,7 +31,7 @@ public class PhieuNhapDAO {
     public ArrayList<PhieuNhap> getListPhieuNhap() {
         ArrayList<PhieuNhap> listPN = new ArrayList<PhieuNhap>();
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from PhieuNhap");
+            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.PhieuNhap");
             while (rs.next()) {
                 PhieuNhap phieunhap = new PhieuNhap(rs);
                 listPN.add(phieunhap);
@@ -44,7 +44,7 @@ public class PhieuNhapDAO {
     }
     
     public PhieuNhap getPhieuNhap(int maPN) {
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from PhieuNhap where MaPN=" + maPN);
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.PhieuNhap where MaPN=" + maPN);
         PhieuNhap phieunhap = null;
         try {
             while (rs.next()) {

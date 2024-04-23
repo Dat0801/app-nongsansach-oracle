@@ -32,7 +32,7 @@ public class NhomHangDAO {
     public ArrayList<NhomHang> getListNhomHang() {
         ArrayList<NhomHang> listNhomHang = new ArrayList<NhomHang>();
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from NhomHang");
+            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhomHang");
             while (rs.next()) {
                 NhomHang nhomhang = new NhomHang(rs);
                 listNhomHang.add(nhomhang);
@@ -45,7 +45,7 @@ public class NhomHangDAO {
     }
 
     public NhomHang getNhomHang(int maNhom) {
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from NhomHang where MaNhomHang=" + maNhom);
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhomHang where MaNhomHang=" + maNhom);
         NhomHang nhomhang = null;
         try {
             while (rs.next()) {

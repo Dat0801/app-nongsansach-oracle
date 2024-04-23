@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import DAO.DataProvider;
 import GUI.Admin.AdminJFrame;
 import DAO.TaiKhoanDAO;
 import DTO.NhanVien;
@@ -142,6 +143,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             if (jtfUserName.getText().length() == 0 || jpfMatKhau.getText().length() == 0) {
                 jlbMsg.setText("Vui lòng không để trống!");
             } else {
+                DataProvider.setUSERNAME(jtfUserName.getText());
+                DataProvider.setPASSWORD(jpfMatKhau.getText());
                 NhanVien nv = TaiKhoanDAO.getInstance().Login(jtfUserName.getText(), jpfMatKhau.getText());
                 if (nv == null) {
                     jlbMsg.setText("<html><div style='width:200px; white-space: pre-wrap; text-align: center;'>Tên đăng nhập hoặc mật khẩu không đúng!</div></html>");
