@@ -34,7 +34,7 @@ public class SessionDAO {
     public ArrayList<Session> getInfo() {
         ArrayList<Session> listSession = new ArrayList<Session>();
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("SELECT s.sid, s.serial#, s.username, s.program from v$session s GROUP BY s.sid, s.serial#, s.username, s.program");
+            ResultSet rs = DataProvider.getInstance().executeQuery("SELECT s.sid, s.serial#, s.username, s.program from v$session s where type != 'BACKGROUND'");
             while (rs.next()) {
                 Session session = new Session(rs);
                 listSession.add(session);
@@ -55,7 +55,7 @@ public class SessionDAO {
     public Process getProcess(int sid) {
         Process process = null;
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("SELECT spid, program, username FROM v$process WHERE addr IN (SELECT paddr FROM v$session WHERE sid=" + sid + ")");
+            ResultSet rs = DataProvider.getInstance().executeQuery("select p.spid, s.username, s.program from v$session s, v$process p where p.addr=s.paddr and s.type!='BACKGROUND' and s.sid=" + sid);
             while (rs.next()) {
                 process = new Process(rs);
             }

@@ -322,10 +322,14 @@ ALTER TABLE chitiethoadon
   ADD CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY (MaHang, MaHD);
 ALTER TABLE chitiethoadon
   ADD CONSTRAINT FK_ChiTietHoaDon_HoaDon FOREIGN KEY (MaHD) REFERENCES hoadon (MaHD);
+ALTER TABLE chitiethoadon
+  ADD CONSTRAINT FK_ChiTietHoaDon_HangHoa FOREIGN KEY (MaHang) REFERENCES HangHoa (MaHang);
 ALTER TABLE chitietphieunhap
   ADD CONSTRAINT PK_ChiTietPhieuNhap PRIMARY KEY (MaPN, MaHang);
 ALTER TABLE chitietphieunhap
   ADD CONSTRAINT FK_ChiTietPhieuNhap_MaHang FOREIGN KEY (MaHang) REFERENCES hanghoa (MaHang);
+ALTER TABLE chitietphieunhap
+  ADD CONSTRAINT FK_ChiTietPhieuNhap_PhieuNhap FOREIGN KEY (MaPN) REFERENCES PhieuNhap (MaPN);
 
  -- Store procedure on table HangHoa
  -- Update HangHoa
