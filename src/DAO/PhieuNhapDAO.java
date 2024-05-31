@@ -43,8 +43,8 @@ public class PhieuNhapDAO {
         return listPN;
     }
     
-    public PhieuNhap getPhieuNhap(int maPN) {
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.PhieuNhap where MaPN=" + maPN);
+    public PhieuNhap getPhieuNhap(String maPN) {
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.PhieuNhap where MaPN=?", maPN);
         PhieuNhap phieunhap = null;
         try {
             while (rs.next()) {
@@ -55,5 +55,23 @@ public class PhieuNhapDAO {
             ex.printStackTrace(); // For example, printing the stack trace
         }
         return phieunhap;
+    }
+    public PhieuNhap getLastPhieuNhap() {
+
+        ResultSet rs = DataProvider.getInstance().executeQuery("call sp_getLastPhieuNhap");
+        PhieuNhap pn = null;
+        try {
+            while (rs.next()) {
+                pn = new PhieuNhap(rs);
+            }
+        } catch (SQLException ex) {
+            // Handle the SQLException appropriately
+            // For example, printing the stack trace
+        }
+        return pn;
+    }
+    public int insertPhieuNhap(PhieuNhap phieunhap) {
+        int rs = DataProvider.getInstance().executeNonQuery("call sp_insertHoaDon", phieunhap.getMaPN(), phieunhap.getMaNV(), phieunhap.getMaNCC(), phieunhap.getTongTien());
+        return rs;
     }
 }

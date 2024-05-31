@@ -4,7 +4,6 @@ import DTO.NhanVien;
 import DAO.DataProvider;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,7 +31,7 @@ public class TaiKhoanDAO {
 
     public NhanVien Login(String username, String password) {
         NhanVien nv = null;
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhanVien where username=? and password=?", username, password);
+        ResultSet rs = DataProvider.getInstance().executeQuery("call sp_login", username, password);  
         try {
             if (rs.next()) {
                 nv = new NhanVien(rs);

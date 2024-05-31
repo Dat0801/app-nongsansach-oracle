@@ -25,7 +25,6 @@ public class AdminJFrame extends javax.swing.JFrame {
         setTitle("QUẢN TRỊ CƠ SỞ DỮ LIỆU ORACLE");
 
         ScreenSwitch controller = new ScreenSwitch(jpnView);
-        controller.setView(jpnInfoDB, jlbInfoDB, "InfoDB");
 
         List<DanhMucBean> listItem = new ArrayList<>();
         listItem.add(new DanhMucBean("InfoDB", jpnInfoDB, jlbInfoDB));
