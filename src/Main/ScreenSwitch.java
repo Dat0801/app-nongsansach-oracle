@@ -5,18 +5,14 @@
  */
 package Main;
 
+import DTO.NhanVien;
 import GUI.BanHangJPanel;
 import GUI.HangHoaJPanel;
 import GUI.HoaDonJPanel;
-import GUI.Admin.InfoDBJPanel;
-import GUI.Admin.PermissionJPanel;
-import GUI.Admin.PolicyJPanel;
+import GUI.KhachHangJPanel;
 import GUI.NhaCungCapJPanel;
 import GUI.NhapHangJPanel;
 import GUI.NhomHangHoaJPanel;
-import GUI.Admin.SessionJPanel;
-import GUI.Admin.TablespaceJPanel;
-import GUI.Admin.UserJPanel;
 import GUI.TrangChuJPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -34,26 +30,22 @@ public class ScreenSwitch {
 
     private JPanel root;
     private String kindSelected = "";
-
+    
     private List<DanhMucBean> listItem = null;
 
     public ScreenSwitch(JPanel jpnRoot) {
-        this.root = jpnRoot;
+        this.root = jpnRoot;        
     }
 
-    public void setView(JPanel jpnItem, JLabel jlbItem, String kindSelected) {
-        this.kindSelected = kindSelected;
+    public void setView(JPanel jpnItem, JLabel jlbItem) {
+        kindSelected = "TrangChu";
 
         jpnItem.setBackground(new Color(173, 216, 230));
         jlbItem.setBackground(new Color(173, 216, 230));
 
         root.removeAll();
         root.setLayout(new BorderLayout());
-        if (this.kindSelected.equals("TrangChu")) {
-            root.add(new TrangChuJPanel());
-        } else {
-            root.add(new InfoDBJPanel());
-        }
+        root.add(new TrangChuJPanel());
         root.validate();
         root.repaint();
     }
@@ -103,30 +95,11 @@ public class ScreenSwitch {
                 case "NhaCungCap":
                     node = new NhaCungCapJPanel();
                     break;
-                case "InfoDB":
-                    node = new InfoDBJPanel();
-                    break;
-                case "Session":
-                    node = new SessionJPanel();
-                    break;
-                case "Tablespace":
-                    node = new TablespaceJPanel();
-                    break;
-                case "User":
-                    node = new UserJPanel();
-                    break;
-                case "Policy":
-                    node = new PolicyJPanel();
-                    break;
-                case "Permission":
-                    node = new PermissionJPanel();
+                case "KhachHang":
+                    node = new KhachHangJPanel();
                     break;
                 default:
-                    if (kindSelected.equals("TrangChu")) {
-                        node = new TrangChuJPanel();
-                    } else {
-                        node = new InfoDBJPanel();
-                    }
+                    node = new TrangChuJPanel();
                     break;
             }
             root.removeAll();

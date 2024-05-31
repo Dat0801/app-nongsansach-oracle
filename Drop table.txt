@@ -1,3 +1,16 @@
+DECLARE
+    v_sql VARCHAR2(1000);
+BEGIN
+    FOR proc IN (SELECT object_name
+                  FROM user_objects
+                  WHERE object_type = 'PROCEDURE') LOOP
+        v_sql := 'DROP PROCEDURE ' || proc.object_name;
+        EXECUTE IMMEDIATE v_sql;
+        DBMS_OUTPUT.PUT_LINE('Dropped procedure: ' || proc.object_name);
+    END LOOP;
+END;
+/
+
 drop table CHITIETHOADON;
 drop table CHITIETPHIEUNHAP;
 drop table HANGHOA;

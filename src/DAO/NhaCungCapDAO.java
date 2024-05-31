@@ -28,10 +28,10 @@ public class NhaCungCapDAO {
 
     }
 
-    public ArrayList<NhaCungCap> getListNhaCungCap() {
+    public ArrayList<NhaCungCap> getListNhaCungCap(int trangthai) {
         ArrayList<NhaCungCap> listNCC = new ArrayList<NhaCungCap>();
         try {
-            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhaCungCap");
+            ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhaCungCap where TrangThai=?", trangthai);
             while (rs.next()) {
                 NhaCungCap nhacungcap = new NhaCungCap(rs);
                 listNCC.add(nhacungcap);
@@ -43,8 +43,8 @@ public class NhaCungCapDAO {
         return listNCC;
     }
     
-    public NhaCungCap getNhaCungCap(int maNCC) {
-        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhaCungCap where MaNCC=" + maNCC);
+    public NhaCungCap getNhaCungCap(String maNCC) {
+        ResultSet rs = DataProvider.getInstance().executeQuery("Select * from CHNONGSAN.NhaCungCap where MaNCC=?", maNCC);
         NhaCungCap nhacungcap = null;
         try {
             while (rs.next()) {
@@ -57,19 +57,28 @@ public class NhaCungCapDAO {
         return nhacungcap;
     }
     public int updateNhaCungCap(NhaCungCap ncc) {
-        int rs = DataProvider.getInstance().executeNonQuery("Update CHNONGSAN.nhacungcap set MaNCC=" + ncc.getMaNCC()+ ", TenNCC=N'" + ncc.getTenNCC() + 
-        "', SDT='" + ncc.getSDT()+ "', DiaChi=N'" + ncc.getDiaChi()+ "', TrangThai='" + ncc.getTrangThai() + "' where MaNCC=" + ncc.getMaNCC());
+        int rs = DataProvider.getInstance().executeNonQuery("call sp_updateNCC", ncc.getMaNCC(), ncc.getTenNCC(), 
+        ncc.getSDT(), ncc.getDiaChi());
         return rs;
     }
     
     public int insertNhaCungCap(NhaCungCap ncc) {
-        int rs = DataProvider.getInstance().executeNonQuery("Insert into CHNONGSAN.nhacungcap values(" + ncc.getMaNCC()+ ", N'" + ncc.getTenNCC()+ 
-        "','" + ncc.getSDT()+ "', N'" + ncc.getDiaChi()+ "', " + ncc.getTrangThai() + ")");
+        int rs = DataProvider.getInstance().executeNonQuery("call sp_insertNCC", ncc.getMaNCC(), ncc.getTenNCC(),
+        ncc.getSDT(), ncc.getDiaChi());
         return rs;
     }
     
-    public int deleteNhaCungCap(int maNhaCungCap) {
-        int rs = DataProvider.getInstance().executeNonQuery("Update CHNONGSAN.nhacungcap set TrangThai=0 where MaNCC=" + maNhaCungCap);
+    public int deleteNhaCungCap(String maNhaCungCap) {
+        int rs = DataProvider.getInstance().executeNonQuery("Update CHNONGSAN.nhacungcap set TrangThai=0 where MaNCC=?", maNhaCungCap);
+        return rs;
+    }
+    public int deletePermanentNhaCungCap(String maNCC) {
+        int rs = DataProvider.getInstance().executeNonQuery("Delete from CHNONGSAN.nhacungcap where MaNCC=?", maNCC);
+        return rs;
+    }
+    
+    public int recoveryNhaCungCap(String maNCC) {
+        int rs = DataProvider.getInstance().executeNonQuery("Update CHNONGSAN.nhacungcap set TrangThai=1 where MaNCC=?", maNCC);
         return rs;
     }
 }

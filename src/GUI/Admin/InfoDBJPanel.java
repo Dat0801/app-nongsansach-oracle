@@ -300,22 +300,7 @@ public class InfoDBJPanel extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        try {
-            int index = jtHangHoa.getSelectedRow();
-            HangHoa hangHoa = listHH.get(index);
-
-            int maHang = hangHoa.getMaHang();
-            String tenHang = hangHoa.getTenHang();
-
-            int kq = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa hàng hóa có tên là: " + tenHang + "?", "Câu hỏi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (kq == JOptionPane.YES_OPTION) {
-                HangHoaDAO.getInstance().deleteHangHoa(maHang);
-            }
-            listHH.remove(index);
-            LoadHHVaoTable(jtHangHoa, jpnView, jspHangHoa, 1);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn hàng hóa muốn xóa!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-        }
+        
 
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -357,23 +342,7 @@ public class InfoDBJPanel extends javax.swing.JPanel {
 
     private void btnXoaVinhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaVinhVienActionPerformed
         // TODO add your handling code here:
-        try {
-            int index = jtHangHoaKhoiPhuc.getSelectedRow();
-
-            HangHoa hangHoa = listHH.get(index);
-
-            int maHang = hangHoa.getMaHang();
-            String tenHang = hangHoa.getTenHang();
-
-            int kq = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa vĩnh viễn hàng hóa có tên là: " + tenHang + "?", "Câu hỏi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (kq == JOptionPane.YES_OPTION) {
-                HangHoaDAO.getInstance().deletePermanentHangHoa(maHang);
-            }
-            listHH.remove(index);
-            LoadHHVaoTable(jtHangHoaKhoiPhuc, jpnViewKhoiPhuc, jspHangHoaKhoiPhuc, 0);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn hàng hóa muốn xóa vĩnh viễn!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
-        }
+        
     }//GEN-LAST:event_btnXoaVinhVienActionPerformed
 
     private void jtbQuanLyHHStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtbQuanLyHHStateChanged

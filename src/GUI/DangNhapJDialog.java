@@ -9,6 +9,7 @@ import DAO.DataProvider;
 import GUI.Admin.AdminJFrame;
 import DAO.TaiKhoanDAO;
 import DTO.NhanVien;
+import DTO.SessionData;
 import java.awt.Color;
 import javax.swing.JFrame;
 
@@ -146,6 +147,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 DataProvider.setUSERNAME(jtfUserName.getText());
                 DataProvider.setPASSWORD(jpfMatKhau.getText());
                 NhanVien nv = TaiKhoanDAO.getInstance().Login(jtfUserName.getText(), jpfMatKhau.getText());
+
                 if (nv == null) {
                     jlbMsg.setText("<html><div style='width:200px; white-space: pre-wrap; text-align: center;'>Tên đăng nhập hoặc mật khẩu không đúng!</div></html>");
                 } else {
@@ -153,17 +155,20 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                         jlbMsg.setText("<html><div style='width:200px; white-space: pre-wrap; text-align: center;'>Tài khoản của bạn đang bị tạm khóa!</div></html>");
                     } else {
                         this.dispose();
-                        if (nv.getChucVu().equals("Nhân viên")) {
-                            MainJFrame mainJFrame = new MainJFrame();
-                            mainJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                            mainJFrame.setVisible(true);
-                            mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        } else {
-                            AdminJFrame adminJFrame = new AdminJFrame();
-                            adminJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                            adminJFrame.setVisible(true);
-                            adminJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        }
+                        SessionData.setNv(nv);
+                        MainJFrame mainJFrame = new MainJFrame(nv);
+                        mainJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        mainJFrame.setVisible(true);
+                        mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        //                        if (nv.getChucVu().equals("Nhân viên")) {
+                        //                            ;
+                        //                        } else {
+                        //                            SessionData.setNv(nv);
+                        //                            AdminJFrame adminJFrame = new AdminJFrame();
+                        //                            adminJFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        //                            adminJFrame.setVisible(true);
+                        //                            adminJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        //                        }
                     }
                 }
             }
