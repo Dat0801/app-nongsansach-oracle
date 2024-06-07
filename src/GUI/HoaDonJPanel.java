@@ -124,7 +124,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
                     .addGap(14, 14, 14)))
         );
 
-        jtbQuanLyHoaDon.addTab("Quản lý khách hàng", jpnQuanLyHoaDon);
+        jtbQuanLyHoaDon.addTab("Quản lý hóa đơn", jpnQuanLyHoaDon);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,7 +156,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         };
 
         for (HoaDon hd : listHD) {
-            Object[] row = {hd.getMaHD(), hd.getMaNV(), hd.getMaHD(), hd.getNgayTao(), hd.getTongTien(), hd.getTrangThai()};
+            Object[] row = {hd.getMaHD(), hd.getMaNV(), hd.getMaKH(), hd.getNgayTao(), hd.getTongTien(), hd.getTrangThai()};
             modelTableDb.addRow(row);
         }
 
@@ -180,24 +180,28 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jpn.validate();
         jpn.repaint();
     }
+    
+    private void TaoDialog(HoaDonJFrame frame, String title) {
+        frame.setResizable(false);
+
+        dialog = new JDialog();
+        dialog.setModal(true);
+        dialog.getContentPane().add(frame.getContentPane());
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setTitle(title);
+        dialog.setVisible(true);
+    }
     private void jtHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtHoaDonMouseClicked
         // TODO add your handling code here:
-//        if (evt.getClickCount() == 2 && jtHoaDon.getSelectedRow() != -1) {
-//            int index = jtHoaDon.getSelectedRow();
-//
-//            HoaDon hd = listHD.get(index);
-//
-//            HoaDonJFrame frame = new HoaDonJFrame(hd, this, 0);
-//            frame.setResizable(false);
-//
-//            JDialog dialog = new JDialog();
-//            dialog.setModal(true);
-//            dialog.getContentPane().add(frame.getContentPane());
-//            dialog.pack();
-//            dialog.setLocationRelativeTo(null);
-//            dialog.setTitle("Sửa khách hàng");
-//            dialog.setVisible(true);
-//        }
+        if (evt.getClickCount() == 2 && jtHoaDon.getSelectedRow() != -1) {
+            int index = jtHoaDon.getSelectedRow();
+
+            HoaDon hd = listHD.get(index);
+
+            HoaDonJFrame frame = new HoaDonJFrame(hd, this);
+            TaoDialog(frame, "Chi tiết hóa đơn");
+        }
     }//GEN-LAST:event_jtHoaDonMouseClicked
 
     private void jtbQuanLyHoaDonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jtbQuanLyHoaDonStateChanged

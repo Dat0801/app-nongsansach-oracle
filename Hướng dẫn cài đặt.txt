@@ -1,0 +1,9 @@
+Cài đặt database:
++ Đăng nhập với user với quyền sysdba. 
++ Chạy file config.sql
++ Sau đó đăng nhập vào tài khoản CHNongSan với username = CHNONGSAN, password: 123 và tạo database với file ql_nong_san_sach.sql
++ Sau đó chạy file grant quyen store procedure.sql
+Cài đặt Netbeans 8.2:
++ Import các file thư viện với đuôi .jar
++ Chạy file Main trong Main package hoặc chạy khi click chuột phải vào project.
++ Đăng nhập vào với tài khoản admin: username = admin, password = admin123.
