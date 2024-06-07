@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class ChiTietHoaDonDAO {
+
     private static ChiTietHoaDonDAO instance;
 
     public static ChiTietHoaDonDAO getInstance() {
@@ -39,12 +40,28 @@ public class ChiTietHoaDonDAO {
         } catch (SQLException ex) {
             // Handle the SQLException appropriately
             // For example, printing the stack trace
-            
+
         }
         return listCTHD;
     }
-    
-     public int insertChiTietHoaDon(ChiTietHoaDon cthd) {
+
+    public ArrayList<ChiTietHoaDon> getListCTHD(String MaHD) {
+        ArrayList<ChiTietHoaDon> listCTHD = new ArrayList<>();
+        try {
+            ResultSet rs = DataProvider.getInstance().executeQuery("call sp_getListCTHDTheoMa", MaHD);
+            while (rs.next()) {
+                ChiTietHoaDon cthd = new ChiTietHoaDon(rs);
+                listCTHD.add(cthd);
+            }
+        } catch (SQLException ex) {
+            // Handle the SQLException appropriately
+            // For example, printing the stack trace
+
+        }
+        return listCTHD;
+    }
+
+    public int insertChiTietHoaDon(ChiTietHoaDon cthd) {
         int rs = DataProvider.getInstance().executeNonQuery("call sp_insertChiTietHoaDon", cthd.getMaHang(), cthd.getMaHD(), cthd.getSoLuong(),
                 cthd.getThanhTien());
         return rs;

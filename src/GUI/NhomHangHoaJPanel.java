@@ -124,7 +124,7 @@ public class NhomHangHoaJPanel extends javax.swing.JPanel {
                     .addGap(14, 14, 14)))
         );
 
-        jtbQuanLyNhomHang.addTab("Quản lý khách hàng", jpnQuanLyNhomHang);
+        jtbQuanLyNhomHang.addTab("Quản lý nhóm hàng", jpnQuanLyNhomHang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,7 +142,7 @@ public class NhomHangHoaJPanel extends javax.swing.JPanel {
         String[] header = {"Mã nhóm hàng", "Tên nhóm hàng"};
         if (jt == null && jpn == null && jsp == null) {
             jt = jtNhomHang;
-            jpn = jpnView;
+            jpn = jpnView3;
             jsp = jspNhomHang;
         }
         listNH = NhomHangDAO.getInstance().getListNhomHang();
@@ -210,29 +210,11 @@ public class NhomHangHoaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTimKiem;
-    private javax.swing.JPanel jpnQuanLyHoaDon;
-    private javax.swing.JPanel jpnQuanLyHoaDon1;
-    private javax.swing.JPanel jpnQuanLyHoaDon2;
     private javax.swing.JPanel jpnQuanLyNhomHang;
-    private javax.swing.JPanel jpnView;
-    private javax.swing.JPanel jpnView1;
-    private javax.swing.JPanel jpnView2;
     private javax.swing.JPanel jpnView3;
-    private javax.swing.JScrollPane jspHoaDon;
-    private javax.swing.JScrollPane jspHoaDon1;
-    private javax.swing.JScrollPane jspHoaDon2;
     private javax.swing.JScrollPane jspNhomHang;
-    private javax.swing.JTable jtHoaDon;
-    private javax.swing.JTable jtHoaDon1;
-    private javax.swing.JTable jtHoaDon2;
     private javax.swing.JTable jtNhomHang;
-    private javax.swing.JTabbedPane jtbQuanLyHoaDon;
-    private javax.swing.JTabbedPane jtbQuanLyHoaDon1;
-    private javax.swing.JTabbedPane jtbQuanLyHoaDon2;
     private javax.swing.JTabbedPane jtbQuanLyNhomHang;
-    private javax.swing.JTextField jtfSearch;
-    private javax.swing.JTextField jtfSearch1;
-    private javax.swing.JTextField jtfSearch2;
     private javax.swing.JTextField jtfSearch3;
     // End of variables declaration//GEN-END:variables
 }

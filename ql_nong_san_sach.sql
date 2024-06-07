@@ -74,7 +74,7 @@ INSERT INTO hanghoa (MaHang, MaNhomHang, MaNCC, TenHang, DVT, HeSo, GiaNhap, Hin
 CREATE TABLE hoadon (
   MaHD NVARCHAR2(10) PRIMARY KEY,
   MaNV NVARCHAR2(10) NOT NULL,
-  MaKH NVARCHAR2(10),
+  MaKH NVARCHAR2(10) DEFAULT 'KH000',
   NgayTao DATE DEFAULT SYSDATE,
   TongTien FLOAT DEFAULT 0,
   TrangThai NVARCHAR2(50) DEFAULT 'Đã hoàn thành'
@@ -83,7 +83,6 @@ CREATE TABLE hoadon (
 INSERT INTO hoadon (MaHD, MaNV, MaKH, TongTien) VALUES ('HD001', 'NV001', 'KH001', 0);
 INSERT INTO hoadon (MaHD, MaNV, MaKH, TongTien) VALUES ('HD002', 'NV002', 'KH002', 0);
 INSERT INTO hoadon (MaHD, MaNV, MaKH, TongTien) VALUES ('HD003', 'NV003', 'KH003', 0);
-INSERT INTO hoadon (MaHD, MaNV, MaKH, TongTien) VALUES ('HD004', 'NV003', NULL, 0);
 
 CREATE TABLE chitiethoadon (
   MaHang NVARCHAR2(10) NOT NULL,
@@ -146,8 +145,6 @@ INSERT ALL
     INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH012', 'HD002', 3, 0)
     INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH013', 'HD003', 2, 0)
     INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH014', 'HD003', 5, 0)
-    INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH015', 'HD004', 2, 0)
-    INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH016', 'HD004', 4, 0)
     INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH023', 'HD001', 2, 0)
     INTO chitiethoadon (MaHang, MaHD, SoLuong, ThanhTien) VALUES ('HH036', 'HD002', 3, 0)
 SELECT * FROM dual;
@@ -245,12 +242,12 @@ CREATE TABLE khachhang (
   DiaChi NVARCHAR2(50) DEFAULT 'Chưa xác đinh',
   TrangThai NUMBER DEFAULT 1
 );
-
-INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH001', N'Nguyễn Văn Phú', '0987654321', N'Lê Trọng Tấn');
-INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH002', N'Trần Thị Dung', '0123456789', N'Bình Chánh');
-INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH003', N'Lê Văn Sỹ', '0912345678', N'Lạc Long Quân');
-INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH004', N'Phạm Thị Kim', '0876543210', N'Thành Thái');
-INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH005', N'Hoàng Văn Cường', '0965432187', N'Điện Biên Phủ');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH000', N'Khách Lẻ', N'Chưa xác định', N'Chưa xác định');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH001', N'Nguyễn Văn Phú', '0946711010', N'Lê Trọng Tấn');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH002', N'Trần Thị Dung', '0399839888', N'Bình Chánh');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH003', N'Lê Văn Sỹ', '0798032455', N'Lạc Long Quân');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH004', N'Phạm Thị Kim', '0977148512', N'Thành Thái');
+INSERT INTO khachhang (MaKH, TenKH, SDT, DiaChi) VALUES ('KH005', N'Hoàng Văn Cường', '0397845124', N'Điện Biên Phủ');
 
 CREATE TABLE nhacungcap (
   MaNCC NVARCHAR2(10) PRIMARY KEY,
@@ -523,6 +520,18 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE PROCEDURE sp_getListCTHDTheoMa (
+     p_MaHD IN VARCHAR2,
+    p_cursor OUT SYS_REFCURSOR
+) IS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT chitiethoadon.MaHang, MaHD, TenHang, SoLuong, SoLuongTon, DVT, GiaBan, ThanhTien 
+    FROM chitiethoadon 
+    JOIN hanghoa ON chitiethoadon.MaHang = hanghoa.MaHang
+    WHERE chitiethoadon.MaHD = p_MaHD;
+END;
+/
 --Procedure for KhachHang
 -- Get List KhachHang
 CREATE OR REPLACE PROCEDURE sp_getListKhachHang (
@@ -615,6 +624,20 @@ BEGIN
 END;
 /
 
+CREATE OR REPLACE PROCEDURE sp_SearchInKhachHang (
+    p_searchStr IN NVARCHAR2,
+    p_cursor OUT SYS_REFCURSOR
+) IS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT * FROM KhachHang 
+    WHERE MaKH = p_searchStr 
+       OR TenKH LIKE '%' || p_searchStr || '%' 
+       OR SDT LIKE '%' || p_searchStr || '%' 
+       OR DiaChi LIKE '%' || p_searchStr || '%';
+END;
+/
+
 -- Login
 CREATE OR REPLACE PROCEDURE sp_login (
     p_username IN VARCHAR2, 
@@ -652,6 +675,55 @@ BEGIN
     ORDER BY SoLuong DESC;
 END;
 /
+
+CREATE OR REPLACE PROCEDURE sp_DoanhThuVaSoHoaDonHomNay (
+    p_cursor OUT SYS_REFCURSOR
+) IS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT 
+        TRUNC(SYSDATE) AS Ngay,
+        COUNT(*) AS SoLuongHoaDon,
+        SUM(TongTien) AS DoanhThu
+    FROM hoadon
+    WHERE TRUNC(NgayTao) = TRUNC(SYSDATE);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE sp_TangGiamPhanTramDoanhThu (
+    p_cursor OUT SYS_REFCURSOR
+) IS
+    DoanhThuHomNay DECIMAL(18, 2);
+    DoanhThuHomQua DECIMAL(18, 2);
+    PhanTramThayDoi DECIMAL(18, 2);
+BEGIN
+    -- Doanh thu hom nay
+    SELECT NVL(SUM(TongTien), 0) INTO DoanhThuHomNay
+    FROM hoadon
+    WHERE TRUNC(NgayTao) = TRUNC(SYSDATE);
+
+    -- Doanh thu hom qua
+    SELECT NVL(SUM(TongTien), 0) INTO DoanhThuHomQua
+    FROM hoadon
+    WHERE TRUNC(NgayTao) = TRUNC(SYSDATE - 1);
+
+    -- Tinh phan tram thay doi
+    IF DoanhThuHomQua != 0 THEN
+        PhanTramThayDoi := ((DoanhThuHomNay - DoanhThuHomQua) / DoanhThuHomQua) * 100;
+    ELSE
+        IF DoanhThuHomNay = 0 THEN
+            PhanTramThayDoi := 0;
+        ELSE
+            PhanTramThayDoi := 100;
+        END IF;
+    END IF;
+
+    -- Tra ve ket qua
+    OPEN p_cursor FOR
+    SELECT PhanTramThayDoi AS PhanTramThayDoi FROM DUAL;
+END;
+/
+
 
 -- Get Last PhieuNhap
 CREATE OR REPLACE PROCEDURE sp_getLastPhieuNhap (

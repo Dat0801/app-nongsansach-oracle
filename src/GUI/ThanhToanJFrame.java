@@ -9,10 +9,7 @@ import DAO.ChiTietHoaDonDAO;
 import DAO.HoaDonDAO;
 import DTO.ChiTietHoaDon;
 import DTO.HoaDon;
-import DTO.KhachHang;
 import DTO.SessionData;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,8 +46,10 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
 
     public String generateMaHD() {
         HoaDon hoadon = HoaDonDAO.getInstance().getLastHoaDon();
-        int sothutu = (Integer.parseInt(hoadon.getMaHD().substring(2)) + 1);       
-        
+        if(hoadon == null) {
+            
+        }
+        int sothutu = (Integer.parseInt(hoadon.getMaHD().substring(2)) + 1);
         String mahd = "HD";
         if (sothutu < 10) {
             mahd = "HD00";
@@ -113,6 +112,11 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
                 jtfKhachThanhToanFocusLost(evt);
             }
         });
+        jtfKhachThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfKhachThanhToanActionPerformed(evt);
+            }
+        });
 
         jlbGiaBan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jlbGiaBan.setText("Giảm giá");
@@ -135,6 +139,11 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
         jtfGiamGia.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfGiamGiaFocusLost(evt);
+            }
+        });
+        jtfGiamGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfGiamGiaActionPerformed(evt);
             }
         });
 
@@ -300,7 +309,7 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập số tiền khách thanh toán", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
             jtfKhachThanhToan.requestFocus();
         } else {
-            String MaKH = null;
+            String MaKH = "KH000";
             if (this.formbanhang.khachhang != null) {
                 MaKH = this.formbanhang.khachhang.getMaKH();
             }
@@ -312,9 +321,9 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, "Thanh toán thành công!!", "Thanh toán", JOptionPane.INFORMATION_MESSAGE);
             if (this.formbanhang.listCTHD != null) {
-               this.formbanhang.listCTHD = null;
-               this.formbanhang.LoadCTHDVaoTable(null, null, null);
-               this.formbanhang.tinhTongTien(this.formbanhang.listCTHD);
+                this.formbanhang.listCTHD = null;
+                this.formbanhang.LoadCTHDVaoTable(null, null, null);
+                this.formbanhang.tinhTongTien(this.formbanhang.listCTHD);
             }
         }
     }//GEN-LAST:event_btnThanhToanActionPerformed
@@ -325,6 +334,9 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
 
     private void jtfKhachThanhToanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfKhachThanhToanFocusLost
         // TODO add your handling code here:
+        setTienThua();
+    }//GEN-LAST:event_jtfKhachThanhToanFocusLost
+    public void setTienThua() {
         double TienThua = 0;
         if (!jtfKhachThanhToan.getText().isEmpty()) {
             double khachThanhToan = Double.parseDouble(jtfKhachThanhToan.getText());
@@ -338,7 +350,16 @@ public class ThanhToanJFrame extends javax.swing.JFrame {
             }
         }
         jtfTienThua.setText(TienThua + "");
-    }//GEN-LAST:event_jtfKhachThanhToanFocusLost
+    }
+    private void jtfKhachThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfKhachThanhToanActionPerformed
+        // TODO add your handling code here:
+        setTienThua();
+    }//GEN-LAST:event_jtfKhachThanhToanActionPerformed
+
+    private void jtfGiamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfGiamGiaActionPerformed
+        // TODO add your handling code here:
+        setTienSauGiamGia();
+    }//GEN-LAST:event_jtfGiamGiaActionPerformed
 
     /**
      * @param args the command line arguments
